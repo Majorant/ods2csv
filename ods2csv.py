@@ -18,10 +18,11 @@ def main(base_dir):
             try:
                 bts, ip = config.bts[sheet.name]
             except KeyError as e:
-                logging.error('error in configuration, no key {} in config'.format(e))                
+                logging.error('error in configuration, no key {} in config'.format(e))
                 continue
             for row in sheet:
-                if str(row[0]).isdigit():
+                if type(row[0]) is int:
+                    print(sheet.name, ' ',row[0], ' ', row)
                     swriter.writerow([sheet.name, row[4], row[5], bts, ip])
 
 
