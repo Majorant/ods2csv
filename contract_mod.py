@@ -7,8 +7,6 @@ import re
 
 def contract_rename(inp: str):
     """change leteers to latin and lowercase chars"""
-    try:
-
     if 'а' in inp.lower():
         return inp.lower().replace('а', 'a')
     elif 'к' in inp.lower():
