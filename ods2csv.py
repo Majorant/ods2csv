@@ -23,7 +23,7 @@ def main(base_dir):
                 continue
             for row in sheet:
                 if type(row[0]) is int:
-                    contract = contract_rename(row[5])
+                    contract = contract_rename(row[5]).strip()
                     swriter.writerow([sheet.name, row[4], contract, bts, ip])
 
 
