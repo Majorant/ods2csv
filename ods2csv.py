@@ -3,7 +3,7 @@ import config
 import pyexcel as pe
 import csv
 import logging
-from contract_mod import contract_rename
+from contract_mod import contract_rename, search
 
 
 def main(base_dir):
@@ -23,8 +23,9 @@ def main(base_dir):
                 continue
             for row in sheet:
                 if type(row[0]) is int:
-                    contract = contract_rename(row[5]).strip()
-                    swriter.writerow([sheet.name, row[4], contract, bts, ip])
+                    contract = search(row[5])
+                    if contract:
+                        swriter.writerow([sheet.name, row[4], contract[0].strip(), bts, ip])
 
 
 if __name__ == '__main__':
